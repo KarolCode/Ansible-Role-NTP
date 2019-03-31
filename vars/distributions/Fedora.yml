@@ -1,0 +1,5 @@
+---
+
+ntp_packages_install:
+  - ntp
+  - libselinux-python

@@ -1,0 +1,8 @@
+---
+
+- include: includes/init.yml
+
+- name: Ensure NTP is stoped.
+  service:
+    name: "{{ ntp_package_demon }}"
+    state: stopped

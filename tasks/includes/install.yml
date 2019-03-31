@@ -1,0 +1,24 @@
+---
+
+- name: Updated source list.
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: "{{ apt_cache_valid_time }}"
+  when: ansible_os_family == "Debian"
+
+- name: Install NTP package
+  become: yes
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ ntp_packages_install }}"
+
+
+- name: Configuration NTP
+  become: yes
+  template:
+    src: "{{ ntp_package_src }}"
+    dest: "{{ ntp_package_dest }}"
+  notify:
+    - restart ntp

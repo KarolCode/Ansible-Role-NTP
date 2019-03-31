@@ -1,0 +1,7 @@
+---
+
+# NTP
+ntp_package_demon: ntp
+
+ntp_packages_install:
+  - ntp

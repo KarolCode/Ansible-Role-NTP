@@ -1,0 +1,8 @@
+---
+
+- include: includes/init.yml
+
+- name: Ensure NTP is started.
+  service:
+    name: "{{ ntp_package_demon }}"
+    state: started
