@@ -9,6 +9,34 @@ The use of the role of ansible is the installation of NTP for many Linux distrib
   * CentOS
   * Fedora
 
+## Install role:
+
+### From Ansible Galaxy:
+
+1. Put in to file `galaxy.yml:
+
+```yaml
+- name: ntp
+  src: karolcode.ntp
+  version: "v0.1.1"
+```
+
+2. Run command: `ansible-galaxy install -r galaxy.yml`
+
+
+### From GitHub:
+
+1. Put in to file `galaxy.yml:
+
+
+```yaml
+- name: ntp
+  src: https://github.com/KarolCode/Ansible-Role-NTP
+  version: "v0.1.1"
+```
+
+2. Run command: `ansible-galaxy install -r galaxy.yml`
+
 ## Application example:
 
 ```yaml
