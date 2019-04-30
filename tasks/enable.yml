@@ -1,8 +1,0 @@
----
-
-- include: includes/init.yml
-
-- name: Ensure NTP is enable at boot.
-  service:
-    name: "{{ ntp_package_demon }}"
-    enabled: true

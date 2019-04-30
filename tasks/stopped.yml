@@ -2,4 +2,4 @@
 
 - include: includes/init.yml
 
-- include: includes/install.yml
+- include: includes/stopped.yml

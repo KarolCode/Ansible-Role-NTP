@@ -1,7 +1,5 @@
 ---
 
-- include: includes/init.yml
-
 - name: Ensure NTP is restarted.
   service:
     name: "{{ ntp_package_demon }}"

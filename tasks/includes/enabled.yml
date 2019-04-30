@@ -1,0 +1,6 @@
+---
+
+- name: Ensure NTP is enabled at boot.
+  service:
+    name: "{{ ntp_package_demon }}"
+    enabled: yes

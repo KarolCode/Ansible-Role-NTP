@@ -7,7 +7,7 @@
     cache_valid_time: "{{ apt_cache_valid_time }}"
   when: ansible_os_family == "Debian"
 
-- name: Install NTP package
+- name: Install NTP package.
   become: yes
   package:
     name: "{{ item }}"
@@ -15,10 +15,22 @@
   loop: "{{ ntp_packages_install }}"
 
 
-- name: Configuration NTP
+- name: Configuration NTP.
   become: yes
   template:
     src: "{{ ntp_package_src }}"
     dest: "{{ ntp_package_dest }}"
-  notify:
-    - restart ntp
+  register: ntp_template
+
+- name: Reloaded service.
+  include: "includes/restarted.yml"
+  when: ntp_template.changed
+
+- name: A resource was imported to turn the service start and stop.
+  include: "includes/{{ service_is }}.yml"
+  when: service_is == "started" or service_is == "stopped"
+
+- name: A resource was imported to turn the service enable and disable.
+  include: "includes/{{ when_boot }}.yml"
+  when: when_boot == "enabled" or when_boot == "disabled"
+
