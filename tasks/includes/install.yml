@@ -26,11 +26,3 @@
   include: "includes/restarted.yml"
   when: ntp_template.changed
 
-- name: A resource was imported to turn the service start and stop.
-  include: "includes/{{ service_is }}.yml"
-  when: service_is == "started" or service_is == "stopped"
-
-- name: A resource was imported to turn the service enable and disable.
-  include: "includes/{{ when_boot }}.yml"
-  when: when_boot == "enabled" or when_boot == "disabled"
-

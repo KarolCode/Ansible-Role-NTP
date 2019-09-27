@@ -1,5 +1,21 @@
 ---
 
 - include: includes/init.yml
+  tags:
+    - ntp_install
+    - ntp_service
 
 - include: includes/install.yml
+  tags:
+    - ntp_install
+
+- block:
+    - name: A resource was imported to turn the service start and stop.
+      include: "includes/{{ ntp_service_is }}.yml"
+      when: ntp_service_is == "started" or ntp_service_is == "stopped"
+
+    - name: A resource was imported to turn the service enable and disable.
+      include: "includes/{{ ntp_when_boot }}.yml"
+      when: ntp_when_boot == "enabled" or ntp_when_boot == "disabled"
+  tags:
+    - ntp_service

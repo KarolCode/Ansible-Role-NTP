@@ -18,7 +18,7 @@ The use of the role of ansible is the installation of NTP for many Linux distrib
 ```yaml
 - name: ntp
   src: karolcode.ntp
-  version: "v0.2.0"
+  version: "v0.2.1"
 ```
 
 2. Run command: `ansible-galaxy install -r galaxy.yml`
@@ -32,7 +32,7 @@ The use of the role of ansible is the installation of NTP for many Linux distrib
 ```yaml
 - name: ntp
   src: https://github.com/KarolCode/Ansible-Role-NTP
-  version: "v0.2.0"
+  version: "v0.2.1"
 ```
 
 2. Run command: `ansible-galaxy install -r galaxy.yml`
@@ -46,8 +46,8 @@ The use of the role of ansible is the installation of NTP for many Linux distrib
       import_role:
         name: ntp
       vars:
-        service_is: started   # started / stopped
-        when_boot:  disabled  # enabled / disabled
+        ntp_service_is: started   # started / stopped
+        ntp_when_boot:  disabled  # enabled / disabled
       tags:
         - ntp
 ```
@@ -58,7 +58,7 @@ The use of the role of ansible is the installation of NTP for many Linux distrib
 
 This Role of Ansible have support for many Linux distribution and many release,
 thanks to cascading inporting variables for Linux distributions.
-
+1
 ```yaml
 - name: Load the variable tree for distribution
   include_vars: "{{ item }}"
@@ -91,15 +91,15 @@ For example:
 
 ### Service management:
 
-Using the ansible role variables `service_is` i `when_boot`, Example:
+Using the ansible role variables `ntp_service_is` i `ntp_when_boot`, Example:
 
 ```yaml
 - name: Install NTP.
   import_role:
     name: ntp
   vars:
-    service_is: started   # started / stopped
-    when_boot:  disabled  # enabled / disabled
+    ntp_service_is: started   # started / stopped
+    ntp_when_boot:  disabled  # enabled / disabled
 ```
 
 You can decide whether the service should be started after installation.
